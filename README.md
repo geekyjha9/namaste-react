@@ -10,4 +10,11 @@
     - Minification
     - Bundling
     - Compress
-    - 
+    - Consistant Hashing
+    - Code Splitting 
+    - Differential Bundling - support older browsers
+    - Diagnostic
+    - Error Handeling 
+    - HTTPs
+    - Tree Shaking - remove unused code
+    - Diffrent Build for dev and prod
