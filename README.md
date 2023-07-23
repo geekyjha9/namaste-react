@@ -17,4 +17,4 @@
     - Error Handeling 
     - HTTPs
     - Tree Shaking - remove unused code
-    - Diffrent Build for dev and prod
+    - Diffrent Build for dev and prod 
