@@ -18,3 +18,11 @@
     - HTTPs
     - Tree Shaking - remove unused code
     - Diffrent Build for dev and prod 
+
+
+# React Hooks - A superpower given by react
+
+    - Normal JS Utility Functions
+        - useState()
+            whenever state variable updates, react rerenders the component
+        - useEffect()

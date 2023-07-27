@@ -56,6 +56,28 @@
     padding: 20px;
 }
 
+.search-box {
+    padding: auto;
+    margin: 0px 10px;
+}
+
+.search {
+    cursor: pointer;
+}
+
+.filter {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px;
+    margin-left: 20px;
+    cursor: pointer;
+    background-color: rgb(250, 214, 186);
+}
+
 .restro-img-container {
     overflow: hidden;
     height: 200px;
@@ -74,4 +96,27 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.shimmer-card {
+    padding: 10px 5px;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 400px;
+    border-radius: 0.5rem;
+    background-color: #f6f5f5;
+    box-shadow: 2px 2px rgb(209, 203, 203);
+}
+
+.login {
+    cursor: pointer;
+    background-color: #f6f5f5;
+    padding: 0px 20px;
 }
