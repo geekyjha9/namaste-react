@@ -3,7 +3,12 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
+  // Local State Variable => Superpowerful Veriable
+  const [searchText, setSearchText] = useState([]);
   const [listOfRestaurent, setListOfRestaurent] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
+
+  // Whenever state variable updates => react triggers reconciliation cycle (re-renders the components)
 
   useEffect(() => {
     fetchData();
@@ -21,6 +26,11 @@ const Body = () => {
       json.data.success.cards[5].gridWidget.gridElements.infoWithStyle
         .restaurants
     );
+
+    setFilteredList(
+      json.data.success.cards[5].gridWidget.gridElements.infoWithStyle
+        .restaurants
+    );
   };
 
   // Conditional Rendering
@@ -29,13 +39,44 @@ const Body = () => {
   //     return <Shimmer />;
   //   }
 
+  if (filteredList.length === 0) {
+    return <h2 className="filter-rnf">Result Not Found...</h2>;
+  }
+
   return listOfRestaurent.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body-container">
       <div className="filter">
-        <input type="text" className="search-box" ></input>
-        <button className="search">Search</button>
+        <input
+          type="text"
+          className="search-box"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        ></input>
+        <button
+          className="search"
+          onClick={() => {
+            // Filter the restaurent cards and update the UI
+            // searchText
+            console.log("Clicked");
+
+            const filteredListBySearch =
+              searchText.length === 0
+                ? listOfRestaurent
+                : listOfRestaurent.filter((res) =>
+                    res.info.name
+                      .toLowerCase()
+                      .includes(searchText.toLowerCase())
+                  );
+
+            setFilteredList(filteredListBySearch);
+          }}
+        >
+          Search
+        </button>
         <button
           className="filter-btn"
           onClick={() => {
@@ -50,7 +91,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         <div className="res-card">
-          {listOfRestaurent.map((restaurent) => (
+          {filteredList.map((restaurent) => (
             <RestroCard key={restaurent.info.id} resData={restaurent} />
           ))}
         </div>
