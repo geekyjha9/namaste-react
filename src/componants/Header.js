@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/contents";
 
 const Header = () => {
@@ -10,6 +10,14 @@ const Header = () => {
     { name: "Contact Us", id: "103f7" },
     { name: "Cart", id: "104f9" },
   ];
+
+  console.log("Header Rendered");
+
+  // if there is no dependency array => useEffect will be called on every render
+  // if there is empty dependency array => useEffect will be called on initial render only (just once)
+  useEffect(() => {
+    console.log("useEffect Called");
+  }, []);
 
   return [
     <div className="header-container">

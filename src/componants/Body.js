@@ -39,11 +39,8 @@ const Body = () => {
   //     return <Shimmer />;
   //   }
 
-  if (filteredList.length === 0) {
-    return <h2 className="filter-rnf">Result Not Found...</h2>;
-  }
 
-  return listOfRestaurent.length === 0 ? (
+  return filteredList.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body-container">
@@ -80,10 +77,10 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            const filteredList = listOfRestaurent.filter(
+            const topRatedRes = filteredList.filter(
               (res) => res.info.avgRating > 4.4
             );
-            setListOfRestaurent(filteredList);
+            setFilteredList(topRatedRes);
           }}
         >
           Top Rated Restaurent
