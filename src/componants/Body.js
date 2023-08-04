@@ -1,14 +1,13 @@
 import RestroCard from "./RestroCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Body = () => {
-  // Local State Variable => Superpowerful Veriable
   const [searchText, setSearchText] = useState([]);
-  const [listOfRestaurent, setListOfRestaurent] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
-
-  // Whenever state variable updates => react triggers reconciliation cycle (re-renders the components)
+  const [listOfRestaurent, setListOfRestaurent] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -21,24 +20,18 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(json);
     setListOfRestaurent(
-      json.data.success.cards[5].gridWidget.gridElements.infoWithStyle
-        .restaurants
+      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
     );
 
     setFilteredList(
-      json.data.success.cards[5].gridWidget.gridElements.infoWithStyle
-        .restaurants
+      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
     );
   };
 
-  // Conditional Rendering
-
-  //   if (listOfRestaurent.length === 0) {
-  //     return <Shimmer />;
-  //   }
-
+  // if(filteredList.length === 0)  return <Shimmer />;
 
   return filteredList.length === 0 ? (
     <Shimmer />
@@ -89,7 +82,12 @@ const Body = () => {
       <div className="res-container">
         <div className="res-card">
           {filteredList.map((restaurent) => (
-            <RestroCard key={restaurent.info.id} resData={restaurent} />
+            <Link
+              key={restaurent.info.id}
+              to={"/restaurent/" + restaurent.info.id}
+            >
+              <RestroCard resData={restaurent} />
+            </Link>
           ))}
         </div>
       </div>

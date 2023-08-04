@@ -127,3 +127,19 @@
 .filter-rnf {
     text-align: center;
 }
+
+
+.res-menu-container {
+    position: relative;
+    left: 33%;
+}
+
+.res-menu-img-container {
+    height: 300px;
+    overflow: hidden;
+}
+
+.res-image-in-menu {
+    width: 50%;
+    
+}

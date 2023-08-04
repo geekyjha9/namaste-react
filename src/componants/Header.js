@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/contents";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [loginText, setLoginText] = useState("Login");
 
   const navItem = [
-    { name: "Home", id: "101f2" },
-    { name: "About Us", id: "102f4" },
-    { name: "Contact Us", id: "103f7" },
+    { name: "Home", id: "101f2", url: "/"},
+    { name: "About Us", id: "102f4", url: "/about" },
+    { name: "Contact Us", id: "103f7", url: "/contact" },
     { name: "Cart", id: "104f9" },
   ];
 
@@ -27,7 +28,7 @@ const Header = () => {
       <div className="nav-items">
         <ul className="header-navbar-list">
           {navItem.map((Items) => (
-            <li key={Items.id}>{Items.name}</li>
+            <li key={Items.id}><Link to={Items.url}>{Items.name}</Link></li>
           ))}
           <button
             className="login"
